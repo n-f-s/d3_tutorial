@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Page Title</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="style.css">
+		
+		<script type="text/javascript" src="d3/d3.v3.js"></script>
+		<!--<script type="text/javascript" src="myscript.js"></script>-->
+		
+    </head>
+    <body>
+        <h1>Create SVG</h1>
+				
+		
+		<script type="text/javascript">
+			var svg = d3.select("body").append("svg");
+			
+			width = 500;
+			height=150;
+			svg.attr("width",width)
+				.attr("height",height);
+			var dataSet = [5,10,15,20,25];
+			
+			var circlesSVG = svg.selectAll("circle")
+				.data(dataSet)
+				.enter()
+				.append("circle");
+			
+			circlesSVG.attr("cx", function (d, i) {
+				return (i*75)+25;})
+			circlesSVG.attr("cy", height/2);
+			circlesSVG.attr("r", function(d) { return d;});
+			
+			circlesSVG.attr("fill","yellow")
+					  .attr("stroke","orange")
+					  .attr("stroke-width", function(d) { return d/2;});
+			
+		</script>
+		
+	
+    </body>
+</html>
+

@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Page Title</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="style.css">
+		
+		<script type="text/javascript" src="d3/d3.v3.js"></script>
+		<!--<script type="text/javascript" src="myscript.js"></script>-->
+		
+    </head>
+    <body>
+        <h1>Page Title</h1>
+		
+		
+
+		<svg width="50" height="50">
+			<circle cx="25" cy="25" r="22"fill="blue" stroke="gray" stroke-width="2"/>
+		</svg>
+		<br>
+		<script type="text/javascript">
+			//var dataset = [ 5, 10, 15, 20, 25 ];
+			//var dataset = [ 25, 7, 5, 26, 11 ];
+			//var dataset = [ 25, 7, 5, 26, 11, 8, 25, 14, 23, 19,
+                14, 11, 22, 29, 11, 13, 12, 17, 18, 10,
+                24, 18, 25, 9, 3 ]
+			var dataset = [];                        //Initialize empty array
+			for (var i = 0; i < 25; i++) {           //Loop 25 times
+				var newNumber = Math.random() * 30;  //New random number (0-30)
+				dataset.push(newNumber);             //Add new number to array
+			}
+			
+			/*
+			//d3.select("body").append("p").text("New paragraph _ manual!");
+			d3.select("body").selectAll("p")
+			.data(dataset)
+			.enter()
+			.append("p")
+			//.text("New paragraph!");
+			.text(function(d) { return d;})
+			//.style("color","red");
+			
+			.style("color", function(d) {
+				if (d>15)
+				{
+					return "red";
+				}
+				else
+				{
+					return "black";
+				}
+			});
+			*/
+			
+			d3.select("body").selectAll("div")
+			  .data(dataset)
+			  .enter()
+			  .append("div")
+			  .attr("class","bar")
+			  .style("margin-right","2px")
+			  .style("height", function(d) { 
+				var barHeight = d*5;
+				return barHeight+"px";});
+		</script>
+		
+	
+    </body>
+</html>
+
